@@ -12,7 +12,7 @@ import React, { useState } from 'react';
             chats : []
         })
         .then(response =>{
-            setNewRoom(input)
+            setNewRoom(response)
         })
         .catch(err => {
             const errorResponse = err.response.data.errors; // Get the errors from err.response.data
