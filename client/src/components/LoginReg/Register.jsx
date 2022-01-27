@@ -31,19 +31,15 @@ const Register = () => {
     const register = (e)=>{
         e.preventDefault();
         axios.post("http://localhost:8000/api/register", registerInfo, {withCredentials:true})
-            .then(res=>{
-                console.log("response from registering", res);
-                history.push("/")
-            })
-            .catch(err => {
-                const errorResponse = err.response.data.errors; // Get the errors from err.response.data
-                const errorArr = []; // Define a temp error array to push the messages in
-                for (const key of Object.keys(errorResponse)) { // Loop through all errors and get the messages
-                    errorArr.push(errorResponse[key].message)
-                }
-                // Set Errors
-                setErrors(errorArr);
-            })
+        .then(res=>{
+            console.log("response from registering", res);
+            if(res.data.errors){
+                setErrors(res.data.errors)
+            }else{
+                console.log("success!")
+            }
+        })
+        .catch(err=> console.log(err))
 
     }
 
