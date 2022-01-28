@@ -6,7 +6,7 @@ export const Header = ({children}) => {
     const [socket] = useState(() => io(":8000"))
     const history = useHistory()
     const onClickHandler = () => {
-        axios.get('http://localhost:8000/logout', {withCredentials:true})
+        axios.get('http://localhost:8000/api/logout', {withCredentials:true})
         .then(res => {
             socket.disconnect(true)
             history.push('/')

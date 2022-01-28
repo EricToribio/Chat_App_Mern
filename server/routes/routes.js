@@ -7,7 +7,7 @@ module.exports = app=>{
     app.post("/api/register", UserController.register);
     app.post("/api/login", UserController.login);
     app.get("/api/users/getloggedinuser", authenticate, UserController.getLoggedInUser);
-    app.get("/logout", UserController.logout)
+    app.get("/api/logout", UserController.logout)
 
     app.post("/api/chatroom/new", ChatRoomController.addChatRooms)
     app.get("/api/chatroom", ChatRoomController.showAllChatRooms)
